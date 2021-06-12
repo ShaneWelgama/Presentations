@@ -1,0 +1,17 @@
+USE TSQLV5;
+GO
+--2
+DECLARE @Context varbinary(10) = CAST ('B' as varbinary);
+SET CONTEXT_INFO @Context;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+SET LOCK_TIMEOUT -1; 
+
+BEGIN TRAN;
+	SELECT *
+	FROM Sales.Orders
+	WHERE orderid = 10384
+
+	--UPDATE Sales.Orders
+	--SET custid = 1
+	--WHERE orderid = 10384
+ROLLBACK;
